@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Calculator{% endblock %}
+
+{% block content %}
+    <h1>Calculator!</h1>
+<form action="/calculator/" method="post"> {% csrf_token %}
+<input name="first_num" type="number">
+
+<select name="operation" id="">
+
+    {% for oper in operations %}
+        <option value="{{ oper }}">{{ oper }}</option>
+    {% endfor %}
+</select>
+<input name="second_num" type="number">
+    <button>Submit</button>
+
+ <p style="color: red; font-weight: bolder">  {{ msg }}</p>
+    <p style="color: green">  {{ result }} </p>
+    </form>
+
+
+
+
+{% endblock %}
+
