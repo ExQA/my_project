@@ -66,4 +66,28 @@ def index(request):
     return render(request, 'weather.html', context)
 
 
+def myip(request):
+    ctx = {}
+    url = 'https://api.myip.com'
+
+    if request.method == 'GET':
+        res = requests.get(url).json()
+        print(res)
+        try:
+            my_info = {
+                'ip': res["ip"],
+                'country': res["country"],
+                'cc': res["cc"]
+            }
+        except KeyError as e:
+            print(e)
+        res['my_info'] = ctx
+
+    return render(request, 'myip.html', ctx)
+
+
+
+
+
+
 

@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('calculator/', views.calculator, name='calculator'),
-    path('weatherapp/', views.index, name='weather')
+    path('weatherapp/', views.index, name='weather'),
+    path('myip/', views.myip, name='myip')
 
 ]

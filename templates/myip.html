@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}MyIP{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+    <div class="row">
+        <div class="col-5 offset-2">
+            <h1> My IP</h1>
+            <form action="" method="get"> {% csrf_token %}
+                <label for="city">City </label>
+                {{ form.name }}
+                <input type="submit" name="send" value="Find" class="mt-2 btn btn-danger">
+            </form>
+        </div>
+        <div class="col-5 offset-2">
+            <h1>Information</h1>
+
+            {% for info in all_info %}
+            <div class="alert alert-info">
+                <div class="row">
+                    <div class="col-9">
+                        <d>City: <d/>{{ info.city }}<br>
+                        <d>Temperature: <d/>{{ info.temp }}<sup>o</sup>
+                    </div>
+                    <div class="col-2 offset-1">
+                        <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Photo of weather" class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
